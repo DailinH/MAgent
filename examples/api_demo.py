@@ -13,6 +13,7 @@ if __name__ == "__main__":
 
     # init the game "pursuit"  (config file are stored in python/magent/builtin/config/)
     env = magent.GridWorld("pursuit", map_size=map_size)
+    # 
     env.set_render_dir("build/render")
 
     # get group handles
