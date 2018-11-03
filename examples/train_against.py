@@ -11,7 +11,7 @@ import math
 import numpy as np
 
 import magent
-from magent.builtin.rule_model import RandomActor
+from magent.builtin. import RandomActor
 
 
 def generate_map(env, map_size, handles):
