@@ -110,7 +110,7 @@ if __name__ == "__main__":
     parser.add_argument("--map_size", type=int, default=100)
     parser.add_argument("--greedy", action="store_true")
     parser.add_argument("--eval", action="store_true")
-    parser.add_argument("--name", type=str, default="pursuit")
+    parser.add_argument("--name", type=str, default="defense")
     args = parser.parse_args()
 
     # set logger
