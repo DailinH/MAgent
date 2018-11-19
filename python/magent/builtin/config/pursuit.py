@@ -4,22 +4,22 @@ import magent
 def get_config(map_size):
     gw = magent.gridworld
     cfg = gw.Config()
-
+    cfg.set({"minimap_mode": True})
     cfg.set({"map_width": map_size, "map_height": map_size})
 
     predator = cfg.register_agent_type(
         "predator",
         {
-            'width': 2, 'length': 2, 'hp': 1, 'speed': 1,
+            'width': 1, 'length': 1, 'hp': 1, 'speed': 1,
             'view_range': gw.CircleRange(5), 'attack_range': gw.CircleRange(2),
-            'attack_penalty': -0.2
+            'attack_penalty': -0.2, 'damage':0.5
         })
 
     prey = cfg.register_agent_type(
         "prey",
         {
             'width': 1, 'length': 1, 'hp': 1, 'speed': 1.5,
-            'view_range': gw.CircleRange(4), 'attack_range': gw.CircleRange(0)
+            'view_range': gw.CircleRange(4), 'attack_range': gw.CircleRange(0),'kill_reward':1
         })
 
     predator_group  = cfg.add_group(predator)

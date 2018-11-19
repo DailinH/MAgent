@@ -85,6 +85,7 @@ class DeepQNetwork(TFBaseModel):
         self.input_feature = tf.placeholder(tf.float32, (None,) + self.feature_space)
         self.action = tf.placeholder(tf.int32, [None])
         self.mask   = tf.placeholder(tf.float32, [None])
+        
         self.eps = tf.placeholder(tf.float32)  # e-greedy
 
         # build graph
