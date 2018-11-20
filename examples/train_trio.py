@@ -1,5 +1,5 @@
 """
-Pursuit: predators get reward when they attack prey.
+Trio: predators get reward when they attack prey.
 """
 
 import argparse
@@ -18,6 +18,7 @@ def play_a_round(env, map_size, handles, models, print_every, train=True, render
     # env.add_walls(method="random", n=map_size * map_size * 0.03)
     env.add_agents(handles[0], method="random", n=5)
     env.add_agents(handles[1], method="random", n=5)
+    env.add_agents(handles[2], method="random", n=3)
 
     step_ct = 0
     done = False
@@ -109,21 +110,21 @@ if __name__ == "__main__":
     parser.add_argument("--map_size", type=int, default=15)
     parser.add_argument("--greedy", action="store_true")
     parser.add_argument("--eval", action="store_true")
-    parser.add_argument("--name", type=str, default="pursuit")
+    parser.add_argument("--name", type=str, default="trio")
     args = parser.parse_args()
 
     # set logger
     magent.utility.init_logger(args.name)
 
     # init the game
-    env = magent.GridWorld("pursuit", map_size=args.map_size)
-    env.set_render_dir("build/render")
+    env = magent.GridWorld("trio", map_size=args.map_size)
+    env.set_render_dir("build/render_trio")
 
     # two groups of agents
     handles = env.get_handles()
 
     # load models
-    names = ["predator", "prey"]
+    names = ["attacker", "defender","target"]
     models = []
 
     for i in range(len(names)):
@@ -134,7 +135,7 @@ if __name__ == "__main__":
         ))
 
     # load if
-    savedir = 'save_model'
+    savedir = 'save_model_1'
     if args.load_from is not None:
         start_from = args.load_from
         print("load ... %d" % start_from)
